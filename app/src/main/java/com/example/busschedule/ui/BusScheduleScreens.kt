@@ -16,7 +16,6 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.material3.Divider
 import androidx.compose.material3.ExperimentalMaterial3Api
-import androidx.compose.material3.FloatingActionButton
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
@@ -48,7 +47,6 @@ import androidx.navigation.navArgument
 import com.example.busschedule.R
 import com.example.busschedule.data.BusSchedule
 import com.example.busschedule.ui.theme.BusScheduleTheme
-import kotlinx.coroutines.launch
 import java.text.SimpleDateFormat
 import java.util.Date
 import java.util.Locale
@@ -70,7 +68,6 @@ fun BusScheduleApp(
         topAppBarTitle = fullScheduleTitle
         navController.navigateUp()
     }
-    val coroutineScope = rememberCoroutineScope()
 
     Scaffold(
         topBar = {
@@ -111,18 +108,7 @@ fun BusScheduleApp(
                     contentPadding = innerPadding,
                     onBack = { onBackHandler() }
                 )
-                FloatingActionButton(
-                    onClick = { coroutineScope.launch{
-                        viewModel.putItem( BusSchedule(
-                            1,
-                            "Ali Street",
-                            0
-                        ))
-                    } },
-                    shape = MaterialTheme.shapes.medium,
-                    content = {}
 
-                )
             }
         }
     }

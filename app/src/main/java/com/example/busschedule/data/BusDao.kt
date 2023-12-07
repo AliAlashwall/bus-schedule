@@ -9,10 +9,10 @@ import kotlinx.coroutines.flow.Flow
 @Dao
 interface BusDao {
 
-    @Query("Select * from BusSchedule Order by arrivalTimeInMillis ASC")
+    @Query("Select * from Schedule Order by arrival_time ASC")
     fun getAllItems() : Flow<List<BusSchedule>>
 
-    @Query("Select * from BusSchedule where stopName = :name Order by arrivalTimeInMillis ASC")
+    @Query("Select * from Schedule where stop_name = :name Order by arrival_time ASC")
     fun getItem(name : String) : Flow<List<BusSchedule>>
 
     @Insert(onConflict = OnConflictStrategy.IGNORE)
